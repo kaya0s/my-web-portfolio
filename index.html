@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kayaos | Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --dark-blue: #0a192f;
+            --slate: #8892b0;
+            --white: #e6f1ff;
+            --accent: #64ffda;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--dark-blue);
+            color: var(--slate);
+            line-height: 1.6;
+            margin-top: 50px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem 0;
+            background: var(--dark-blue);
+            border-bottom: 1px solid rgba(136, 146, 176, 0.1);
+            z-index: 1000;
+            backdrop-filter: blur(10px); /* Optional: Adds glass effect */
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            justify-content: flex-end;
+        }
+
+        .nav-links a {
+            color: var(--slate);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        section {
+            padding: 6rem 0;
+        }
+
+       /* Add this to your hero section styles */
+.hero .social-links {
+    display: flex;
+    gap: 2rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    justify-content: flex-start; /* Align left, use center if preferred */
+}
+
+.hero .social-links a {
+    font-size: 2.2rem; /* Increased size */
+    color: var(--slate);
+    transition: all 0.3s ease;
+}
+
+.hero .social-links a:hover {
+    color: var(--accent);
+    transform: translateY(-3px);
+}
+
+/* Specifically target the icons */
+.hero .social-links .fab {
+    font-size: 1em; /* Inherits size from parent anchor */
+    width: 1em;
+    height: 1em;
+    vertical-align: middle;
+}
+
+.section-title {
+    color: var(--white);
+    font-size: 2rem;
+    margin: 0 auto 2rem; /* Centers horizontally */
+    position: relative;
+    display: block;
+    text-align: center; /* Centers text */
+    width: fit-content; /* Contains width to content */
+    margin-bottom: 75px;
+}
+
+        .project-item {
+        display: flex;
+        gap: 3rem;
+        align-items: center;
+        margin-bottom: 4rem;
+    }
+
+    .project-media {
+        flex: 1;
+        max-width: 600px;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+
+    .project-content {
+        flex: 1;
+        padding: 2rem;
+    }
+
+    .project-media img, .project-media video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 8px;
+        transition: transform 0.3s;
+    }
+
+    .project-media:hover img, .project-media:hover video {
+        transform: scale(1.03);
+    }
+
+    /* Alternate sides for each project */
+    .project-item:nth-child(even) {
+        flex-direction: row-reverse;
+    }
+
+    .tech-tags {
+        display: flex;
+        gap: 0.8rem;
+        flex-wrap: wrap;
+        margin: 1.5rem 0;
+    }
+
+    .tech-tag {
+        background: rgba(100, 255, 218, 0.1);
+        color: var(--accent);
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-size: 0.9rem;
+    }
+
+    .project-links {
+        margin-top: 2rem;
+    }
+
+    .project-links a {
+        color: var(--accent);
+        text-decoration: none;
+        margin-right: 2rem;
+        transition: opacity 0.3s;
+    }
+
+    .project-links a:hover {
+        opacity: 0.8;
+    }
+
+    @media (max-width: 768px) {
+        .project-item {
+            flex-direction: column!important;
+        }
+        
+        .project-media {
+            max-width: 100%;
+        }
+    }
+
+    .certificates-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+
+    .certificate-card {
+        background: #112240;
+        border-radius: 8px;
+        overflow: hidden;
+        transition: transform 0.3s;
+    }
+
+    .certificate-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .certificate-image {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        border-bottom: 2px solid var(--accent);
+    }
+
+    .certificate-details {
+        padding: 1.5rem;
+    }
+
+    .certificate-details h4 {
+        color: var(--white);
+        margin-bottom: 0.5rem;
+    }
+
+    .certificate-details p {
+        font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+        .certificates-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+        /* Add these styles to existing CSS */
+    #contact {
+        background: #0d213a;
+        padding: 6rem 0;
+    }
+
+    .contact-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        margin-top: 2rem;
+    }
+
+    .contact-info {
+        padding-right: 2rem;
+    }
+
+    .contact-form {
+    border: 1px solid #233554;
+    border-radius: 8px;
+    padding: 2rem;
+    position: relative;
+    }
+    .contact-form::before {
+    content: ">_";
+    position: absolute;
+    top: -15px;
+    left: 20px;
+    background: var(--dark-blue);
+    padding: 0 10px;
+    color: var(--accent);
+    font-family: 'Courier New', monospace;
+    }
+
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
+
+    input, textarea {
+        width: 100%;
+        padding: 1rem;
+        background: #112240;
+        border: 1px solid #233554;
+        color: var(--slate);
+        border-radius: 4px;
+        transition: border-color 0.3s;
+    }
+
+    input:focus, textarea:focus {
+        outline: none;
+        border-color: var(--accent);
+    }
+
+    button {
+        background: var(--accent);
+        color: var(--dark-blue);
+        padding: 1rem 2rem;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: transform 0.3s;
+    }
+
+    button:hover {
+        transform: translateY(-2px);
+    }
+
+    .contact-methods {
+        margin-top: 2rem;
+    }
+
+    .contact-methods a {
+        color: var(--slate);
+        text-decoration: none;
+        display: block;
+        margin-bottom: 1rem;
+        transition: color 0.3s;
+    }
+
+    .contact-methods a:hover {
+        color: var(--accent);
+    }
+
+    @media (max-width: 768px) {
+        .contact-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    /* Add to existing hero styles */
+    .hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 4rem 2rem;
+    }
+
+    .hero-container {
+        display: flex;
+        align-items: center;
+        gap: 4rem;
+        max-width: 1200px;
+        width: 100%;
+    }
+
+    .profile-img-container {
+        flex: 1;
+        max-width: 400px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .profile-img {
+        width: 100%;
+        max-width: 320px;
+        height: auto;
+        border-radius: 50%;
+        border: 3px solid var(--accent);
+        box-shadow: 0 0 40px rgba(100, 255, 218, 0.1);
+        transition: transform 0.3s;
+    }
+
+    .hero-content {
+        flex: 1;
+        max-width: 600px;
+    }
+
+    .hero-content h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1.5rem;
+        color: var(--white);
+    }
+
+    .hero-content p {
+        font-size: 1.1rem;
+        margin-bottom: 2rem;
+        line-height: 1.8;
+    }
+
+    @media (max-width: 768px) {
+        .hero-container {
+            flex-direction: column;
+            text-align: center;
+            gap: 2rem;
+        }
+
+        .profile-img {
+            max-width: 250px;
+        }
+
+        .hero-content {
+            text-align: center;
+        }
+
+                /* Update the social links styles */
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .social-links a {
+            font-size: 1.8rem; /* Increased from 1.5rem */
+            color: var(--slate);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .social-links a:hover {
+            color: var(--accent);
+            transform: scale(1.15);
+        }
+
+        /* Specifically target Font Awesome icons */
+        /* .social-links .fab {
+            font-size: 1em; 
+            width: 1em;    
+            height: 1em;
+        } */
+    }
+.progress-bar {
+    height: 4px;
+    background: #233554;
+    border-radius: 2px;
+    overflow: hidden;
+    margin-bottom: 1rem;    
+}
+
+.progress {
+    height: 100%;
+    background: var(--accent);
+    transition: width 1s ease-out;
+}
+
+
+/* Footer Styles */
+footer {
+    background: var(--dark-blue);
+    border-top: 1px solid rgba(136, 146, 176, 0.1);
+    padding: 2rem 0;
+    text-align: center;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.copyright {
+    color: var(--slate);
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+    .social-links {
+        gap: 1.5rem;
+    }
+    
+    .copyright {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}
+
+
+
+/* Professional Logo Styling */
+.logo {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-right: auto; /* Pushes nav to right */
+    padding: 0.5rem 0;
+    position: relative;
+    left: -0.5rem; /* Optical alignment fix */
+}
+
+.logo-mark {
+    background: var(--accent);
+    color: var(--dark-blue);
+    width: 32px;
+    height: 32px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.2rem;
+    font-family: 'Courier New', monospace;
+}
+
+.logo-text {
+    color: var(--white);
+    font-weight: 500;
+    font-size: 1.4rem;
+    letter-spacing: -0.5px;
+    transition: color 0.3s;
+}
+
+.logo:hover .logo-text {
+    color: var(--accent);
+}
+
+/* Perfect alignment with container */
+nav .container {
+    display: flex;
+    align-items: center;
+}
+
+/* Mobile Optimization */
+@media (max-width: 768px) {
+    .logo {
+        left: 0;
+    }
+    
+    .logo-mark {
+        width: 28px;
+        height: 28px;
+        font-size: 1.1rem;
+    }
+    
+    .logo-text {
+        font-size: 1.2rem;
+    }
+}
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <!-- Logo -->
+            <a href="#" class="logo" aria-label="Home">
+                <span class="logo-mark">K</span>
+                <span class="logo-text">ayaos</span>
+            </a>
+    
+            <!-- Navigation Links -->
+            <div class="nav-links">
+                <a href="#projects">Projects</a>
+                <a href="#certificates">Certificates</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+       <!-- Updated HTML -->
+    <section class="hero">
+        <div class="container hero-container">
+            <div class="profile-img-container">
+                <img src="assets/325964865_1944570445890740_8843139606234986412_n.jpg" alt="Your Name" class="profile-img">
+            </div>
+            
+            <div class="hero-content">
+                <h1>Kayaos Kun</h1>
+                <p class="accent" style="color:#64ffda ; border-radius: 20px; display: inline-block;padding: 10px; margin-left: -10px; background: rgba(100, 255, 218, 0.1);">Aspiring Backend Developer</p>
+                <p>A second-year Information Technology student at Bukidnon State University with a passion for technology.</p>
+                <div class="social-links">
+                    <a href="https://github.com/kaya0s"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/erwin-lanzaderas-263812312"><i class="fab fa-linkedin"></i></a> 
+                    <a href="https://www.facebook.com/kaya0s"><i class="fab fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/yaosthegreat/"><i class="fab fa-instagram"></i></a>
+                    
+                </div>
+                <div class="skill">
+                    <div class="skill-header">
+                        <span>html</span>
+                        <span>85%</span>
+                        
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 85%"></div>
+                    </div>
+                    <div class="skill-header">
+                        <span>css</span>
+                        <span>15%</span>
+                        
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 15%"></div>
+                    </div>
+
+                    <div class="skill-header">
+                        <span>java</span>
+                        <span>50%</span>
+                        
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 50%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title">Projects</h2>
+            
+            <!-- Project 1 -->
+            <div class="project-item">
+                <div class="project-media">
+                    <img src="assets/Screenshot 2024-12-17 121253.png" alt="E-commerce Platform">
+                    <!-- For video: -->
+                    <!-- <video controls>
+                        <source src="demo.mp4" type="video/mp4">
+                    </video> -->
+                </div>
+                <div class="project-content">
+                    <h3>SQUID GAME</h3>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Java</span>
+                        
+                    </div>
+                    <p>Our Game Development Final Project</p>
+                    <div class="project-links">
+                        <a href="https://github.com/kaya0s/SQUID-GAME-Redlight-GreenLight"><i class="fab fa-github"></i> Source Code</a>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Project 2 (will auto-flip sides) -->
+            <div class="project-item">
+                <div class="project-media">
+                    <img src="assets/snake.png" alt="">
+                </div>
+                <div class="project-content">
+                    <h3>Snake Wars</h3>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Java</span>
+                        
+                    </div>
+                    <p>A last man standing Snake Game 4 Players</p>
+                    <div class="project-links">
+                        <a href="https://github.com/kaya0s/Snake-Wars"><i class="fab fa-github"></i>Source Code</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="certificates">
+        <div class="container">
+            <h2 class="section-title">Certifications</h2>
+            <div class="certificates-grid">
+                <!-- Certificate 1 -->
+                <div class="certificate-card">
+                    <img src="aws-cert.jpg" alt="CS:50" class="certificate-image">
+                    <div class="certificate-details">
+                        <h4>CS50:Introduction to Python</h4>
+                        <p class="accent">Harvard University</p>
+                        <p>Issued: March 2023 • asdasdad</p>
+                    </div>
+                </div>
+    
+                <!-- Certificate 2 -->
+                <div class="certificate-card">
+                    <img src="assets/Mern Stack Certificate.jpg" alt="Node.js Certification" class="certificate-image">
+                    <div class="certificate-details">
+                        <h4>Introduction to Mern Stack</h4>
+                        <p class="accent">SimpliLearn</p>
+                        <p>Issued: January 2024</p>
+                    </div>
+                </div>
+    
+                <!-- Add more certificates following the same pattern -->
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Get in Touch</h2>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <p>Have a question or want to work together? Feel free to reach out!</p>
+                    <div class="contact-methods">
+                        <a href="mailto:your.email@example.com">
+                            <i class="fas fa-envelope"></i> kayaoslanz13@gmail.com
+                        </a>
+                        <a href="tel:+63 9066 431 882">
+                            <i class="fas fa-phone"></i> +63 9066 431 882
+                        </a>
+                        <div class="social-links">
+                            <a href="https://github.com/kaya0s"><i class="fab fa-github"> kaya0s</i></a>
+                            <a href="https://www.linkedin.com/in/erwin-lanzaderas-263812312/"><i class="fab fa-linkedin"> Erwin Lanzaderas</i></a>
+                            <a href="https://www.facebook.com/kaya0s"><i class="fab fa-facebook"> Kayaos Kun</i></a>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <input type="text" placeholder="Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Email" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea rows="5" placeholder="Message" required></textarea>
+                    </div>
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+    
+                <!-- Copyright -->
+                <div class="copyright">
+                    <p>Built by Kayaos</p>
+                    <p>&copy; 2024 All rights reserved</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+
+    <script>
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add animation on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        });
+
+        document.querySelectorAll('.project-card, .certificate-card').forEach((el) => {
+            el.style.opacity = 0;
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'all 0.6s ease-out';
+            observer.observe(el);
+
+            const form = document.getElementById('contactForm');
+    
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        // Add your form handling logic here
+        // For production use, connect to a service like Formspree or Netlify Forms
+        alert('Message sent successfully!');
+        form.reset();
+    });
+        });
+    </script>
+</body>
+</html>
